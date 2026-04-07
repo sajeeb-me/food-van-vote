@@ -6,14 +6,8 @@ import { supabase } from "@/lib/supabase";
 import { useVotingSession } from "@/hooks/useVotingSession";
 import { VanCard } from "@/components/VanCard";
 import { LiveChart } from "@/components/LiveChart";
-import {
-    UtensilsCrossed,
-    LogOut,
-    Settings,
-    AlertTriangle,
-    X,
-    Loader2,
-} from "lucide-react";
+import { Header } from "@/components/Header";
+import { AlertTriangle, X, Loader2, UtensilsCrossed } from "lucide-react";
 import type { User } from "@supabase/supabase-js";
 
 export default function VotePage() {
@@ -44,11 +38,6 @@ export default function VotePage() {
         });
     }, [router]);
 
-    async function handleSignOut() {
-        await supabase.auth.signOut();
-        router.replace("/");
-    }
-
     // ── Sorted vans by current vote rank ───────────────────────
     const rankedVans = [...vans].sort(
         (a, b) => (voteCounts[b.id] ?? 0) - (voteCounts[a.id] ?? 0)
@@ -67,31 +56,7 @@ export default function VotePage() {
         <main className="min-h-screen pb-16"
             style={{ background: "radial-gradient(ellipse 100% 40% at 50% 0%, #1e1400 0%, var(--bg) 55%)" }}>
 
-            {/* Top bar */}
-            <header className="sticky top-0 z-20 border-b"
-                style={{ background: "rgba(15,13,11,0.85)", backdropFilter: "blur(12px)", borderColor: "var(--border)" }}>
-                <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                        <UtensilsCrossed size={18} style={{ color: "var(--amber)" }} />
-                        <span className="font-bold text-sm tracking-tight" style={{ color: "var(--cream)" }}>
-                            FoodVan Vote
-                        </span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                        {isHr && (
-                            <button onClick={() => router.push("/admin")} className="btn-ghost flex items-center gap-1.5 text-xs">
-                                <Settings size={13} />
-                                Admin
-                            </button>
-                        )}
-                        <button onClick={handleSignOut} className="btn-ghost flex items-center gap-1.5 text-xs">
-                            <LogOut size={13} />
-                            Sign out
-                        </button>
-                    </div>
-                </div>
-            </header>
+            <Header showAdmin={isHr} />
 
             <div className="max-w-5xl mx-auto px-4 pt-10">
 
