@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Loader2, UtensilsCrossed } from "lucide-react";
+import Image from "next/image";
 
 const COMPANY_DOMAIN = "gmail.com"; // ← change to your actual domain
 
@@ -60,11 +61,12 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center m-4 p-4">
+    <main className="min-h-screen flex items-center justify-center px-4 bg-(--bg)">
       <div className="w-full max-w-sm">
 
         {/* Logo + Title */}
         <div className="mb-8 text-center">
+          <Image src="/logo.png" alt="FoodVan Vote" width={64} height={64} />
           <h1 className="text-2xl font-semibold" style={{ color: "var(--textBase)" }}>
             FoodVan Vote
           </h1>
