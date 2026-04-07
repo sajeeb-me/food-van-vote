@@ -23,6 +23,8 @@ export async function middleware(request: NextRequest) {
         data: { user },
     } = await supabase.auth.getUser();
 
+    // console.log(user)
+
     const { pathname } = request.nextUrl;
 
     // Redirect unauthenticated users to login
