@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { theme, buildCssVariables } from "@/lib/theme";
 
 export const metadata: Metadata = {
   title: "Food Van Vote",
@@ -13,9 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-      </body>
+      <head>
+        {/* All CSS variables are generated from src/lib/theme.ts */}
+        <style dangerouslySetInnerHTML={{ __html: buildCssVariables(theme) }} />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

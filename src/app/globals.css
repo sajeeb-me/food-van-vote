@@ -2,18 +2,10 @@
 @import "tailwindcss/preflight";
 @import "tailwindcss/utilities";
 
-:root {
-  --bg: #0f0d0b;
-  --surface: #1c1916;
-  --surface-2: #252018;
-  --border: #2e2920;
-  --amber: #f59e0b;
-  --amber-dim: #92610a;
-  --cream: #faf3e0;
-  --muted: #7a6e5f;
-  --green: #4ade80;
-  --red: #f87171;
-}
+/* ─────────────────────────────────────────────────────
+   CSS variables are injected by src/lib/theme.ts via
+   layout.tsx. Edit theme.ts to change any app colour.
+   ───────────────────────────────────────────────────── */
 
 * {
   box-sizing: border-box;
