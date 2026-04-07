@@ -18,7 +18,9 @@ export default function RootLayout({
         {/* All CSS variables are generated from src/lib/theme.ts */}
         <style dangerouslySetInnerHTML={{ __html: buildCssVariables(theme) }} />
       </head>
-      <body>{children}</body>
+      <body className="bg-(--bg) text-(--textBase)">
+        {children}
+      </body>
     </html>
   );
 }

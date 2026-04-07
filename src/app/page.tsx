@@ -60,54 +60,52 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4"
-      style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, #2a1f0a 0%, var(--bg) 60%)" }}>
+    <main className="min-h-screen flex items-center justify-center m-4 p-4">
+      <div className="w-full max-w-sm">
 
-      {/* Decorative top bar */}
-      <div className="fixed top-0 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, var(--amber), transparent)" }} />
-
-      <div className="w-full max-w-sm animate-fade-up">
-        {/* Logo mark */}
-        <div className="flex flex-col items-center gap-3 mb-10">
-          <div className="w-14 h-14 rounded-2xl flex items-center justify-center"
-            style={{ background: "var(--amber)", boxShadow: "0 0 32px color-mix(in srgb, var(--amber) 40%, transparent)" }}>
-            <UtensilsCrossed size={26} color="#0f0d0b" strokeWidth={2.2} />
-          </div>
-          <div className="text-center">
-            <h1 className="text-3xl font-black" style={{ color: "var(--cream)", letterSpacing: "-0.02em" }}>
-              FoodVan Vote
-            </h1>
-            <p className="text-sm mt-1" style={{ color: "var(--muted)" }}>
-              Company employees only
-            </p>
-          </div>
+        {/* Logo + Title */}
+        <div className="mb-8 text-center">
+          <h1 className="text-2xl font-semibold" style={{ color: "var(--textBase)" }}>
+            FoodVan Vote
+          </h1>
+          <p className="text-sm mt-1" style={{ color: "var(--muted)" }}>
+            Sign in with your work email
+          </p>
         </div>
 
         {/* Card */}
-        <div className="card p-7">
-          {/* Mode toggle */}
-          <div className="flex rounded-xl p-1 mb-6 gap-1"
-            style={{ background: "var(--surface-2)" }}>
+        <div
+          className="rounded-2xl p-6"
+          style={{
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+          }}
+        >
+          {/* Toggle */}
+          <div className="flex mb-6 border rounded-lg overflow-hidden">
             {(["sign_in", "sign_up"] as Mode[]).map((m) => (
-              <button key={m}
-                onClick={() => { setMode(m); setMessage(null); }}
-                className="flex-1 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
+              <button
+                key={m}
+                onClick={() => {
+                  setMode(m);
+                  setMessage(null);
+                }}
+                className="flex-1 py-2 text-sm font-medium"
                 style={{
-                  background: mode === m ? "var(--surface)" : "transparent",
-                  color: mode === m ? "var(--cream)" : "var(--muted)",
-                  boxShadow: mode === m ? "0 1px 4px rgba(0,0,0,0.4)" : "none",
-                }}>
-                {m === "sign_in" ? "Sign in" : "Create account"}
+                  background: mode === m ? "var(--surface2)" : "transparent",
+                  color: mode === m ? "var(--textBase)" : "var(--muted)",
+                }}
+              >
+                {m === "sign_in" ? "Sign in" : "Sign up"}
               </button>
             ))}
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            {/* Email */}
             <div>
-              <label className="text-xs font-semibold uppercase tracking-widest mb-2 block"
-                style={{ color: "var(--muted)" }}>
-                Work email
+              <label className="text-sm mb-1 block" style={{ color: "var(--textMuted)" }}>
+                Email
               </label>
               <input
                 type="email"
@@ -115,13 +113,16 @@ export default function LoginPage() {
                 placeholder={`you@${COMPANY_DOMAIN}`}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="input"
+                className="w-full px-3 py-2 rounded-lg border outline-none"
+                style={{
+                  borderColor: "var(--border)",
+                }}
               />
             </div>
 
+            {/* Password */}
             <div>
-              <label className="text-xs font-semibold uppercase tracking-widest mb-2 block"
-                style={{ color: "var(--muted)" }}>
+              <label className="text-sm mb-1 block" style={{ color: "var(--textMuted)" }}>
                 Password
               </label>
               <input
@@ -131,32 +132,45 @@ export default function LoginPage() {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="input"
+                className="w-full px-3 py-2 rounded-lg border outline-none"
+                style={{
+                  borderColor: "var(--border)",
+                }}
               />
             </div>
 
+            {/* Message */}
             {message && (
-              <p className="text-sm rounded-xl px-4 py-3"
+              <p
+                className="text-sm rounded-lg px-3 py-2"
                 style={{
-                  background: message.ok
-                    ? "color-mix(in srgb, var(--green) 12%, transparent)"
-                    : "color-mix(in srgb, var(--red) 12%, transparent)",
-                  color: message.ok ? "var(--green)" : "var(--red)",
-                  border: `1px solid ${message.ok ? "color-mix(in srgb, var(--green) 25%, transparent)" : "color-mix(in srgb, var(--red) 25%, transparent)"}`,
-                }}>
+                  background: message.ok ? "#ecfdf5" : "#fef2f2",
+                  color: message.ok ? "#16a34a" : "#dc2626",
+                  border: `1px solid ${message.ok ? "#bbf7d0" : "#fecaca"}`,
+                }}
+              >
                 {message.text}
               </p>
             )}
 
-            <button type="submit" disabled={loading} className="btn-primary mt-1 flex items-center justify-center gap-2">
-              {loading && <Loader2 size={15} className="animate-spin" />}
+            {/* Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="mt-2 py-2.5 rounded-lg text-white text-sm font-medium flex items-center justify-center gap-2"
+              style={{
+                background: "var(--primary)",
+              }}
+            >
+              {loading && <Loader2 size={16} className="animate-spin" />}
               {mode === "sign_in" ? "Sign in" : "Create account"}
             </button>
           </form>
         </div>
 
-        <p className="text-center text-xs mt-5" style={{ color: "var(--muted)" }}>
-          Access restricted to {COMPANY_DOMAIN} accounts
+        {/* Footer */}
+        <p className="text-xs text-center mt-4" style={{ color: "var(--muted)" }}>
+          Only {COMPANY_DOMAIN} accounts allowed
         </p>
       </div>
     </main>

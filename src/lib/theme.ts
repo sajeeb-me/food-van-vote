@@ -11,34 +11,24 @@
 
 export const theme = {
     // ── Backgrounds ───────────────────────────
-    /** Page / outermost background */
-    bg: "#0f0d0b",
-    /** Card and panel background */
-    surface: "#1c1916",
-    /** Input, secondary panel background */
-    surface2: "#252018",
+    bg: "#ffffff",
+    surface: "#ffffff",
+    surface2: "#f8fafc",
 
     // ── Borders ───────────────────────────────
-    /** Default border colour */
-    border: "#2e2920",
+    border: "#e5e7eb",
 
     // ── Brand / Accent ────────────────────────
-    /** Primary action colour (buttons, highlights, chart leader) */
-    primary: "#f59e0b",
-    /** Dimmed / hover variant of the primary colour */
-    primaryDim: "#92610a",
+    primary: "#111827",
+    primaryDim: "#374151",
 
     // ── Text ──────────────────────────────────
-    /** Primary text */
-    textBase: "#faf3e0",
-    /** Secondary / placeholder text */
-    textMuted: "#7a6e5f",
+    textBase: "#111827",
+    textMuted: "#6b7280",
 
     // ── Status ────────────────────────────────
-    /** Success states */
-    success: "#4ade80",
-    /** Error / destructive states */
-    danger: "#f87171",
+    success: "#16a34a",
+    danger: "#dc2626",
 } as const;
 
 export type Theme = typeof theme;
