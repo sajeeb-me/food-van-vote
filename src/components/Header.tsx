@@ -36,7 +36,6 @@ export function Header({ showBack = false, showAdmin = false, showAdminLabel = f
                     </button>
                 ) : (
                     <div className="flex items-center gap-2.5">
-                        {/* <UtensilsCrossed size={18} style={{ color: "var(--amber)" }} /> */}
                         <Image src={Logo} alt="Food Van Vote" width={25} height={25} />
                         <span className="font-bold text-sm tracking-tight">
                             FoodVan Vote
