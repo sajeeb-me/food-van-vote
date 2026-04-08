@@ -2,7 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-import { UtensilsCrossed, LogOut, Settings, ArrowLeft } from "lucide-react";
+import { LogOut, Settings, ArrowLeft } from "lucide-react";
+import Logo from "../../public/logo-white.png";
+import Image from "next/image";
 
 interface HeaderProps {
     showBack?: boolean;
@@ -20,30 +22,23 @@ export function Header({ showBack = false, showAdmin = false, showAdminLabel = f
 
     return (
         <header
-            className="sticky top-0 z-20 border-b"
-            style={{
-                background: "rgba(15,13,11,0.85)",
-                backdropFilter: "blur(12px)",
-                borderColor: "var(--border)",
-            }}
+            className="sticky top-0 z-20 border-b bg-(--primary) backdrop-blur text-white"
         >
             <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
                 {/* Left side */}
                 {showBack ? (
                     <button
                         onClick={() => router.push("/vote")}
-                        className="flex items-center gap-2 text-sm transition-colors"
-                        style={{ color: "var(--muted)" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--cream)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+                        className="flex items-center gap-2 text-sm transition-colors cursor-pointer "
                     >
                         <ArrowLeft size={15} />
                         Back to vote
                     </button>
                 ) : (
                     <div className="flex items-center gap-2.5">
-                        <UtensilsCrossed size={18} style={{ color: "var(--amber)" }} />
-                        <span className="font-bold text-sm tracking-tight" style={{ color: "var(--cream)" }}>
+                        {/* <UtensilsCrossed size={18} style={{ color: "var(--amber)" }} /> */}
+                        <Image src={Logo} alt="Food Van Vote" width={25} height={25} />
+                        <span className="font-bold text-sm tracking-tight">
                             FoodVan Vote
                         </span>
                     </div>
@@ -52,7 +47,7 @@ export function Header({ showBack = false, showAdmin = false, showAdminLabel = f
                 {/* Right side */}
                 <div className="flex items-center gap-2">
                     {showAdminLabel && (
-                        <span className="text-sm font-semibold" style={{ color: "var(--cream)" }}>
+                        <span className="text-sm font-semibold">
                             HR Admin
                         </span>
                     )}

@@ -13,6 +13,7 @@ import {
     CheckCircle2,
     UtensilsCrossed,
 } from "lucide-react";
+import { Header } from "@/components/Header";
 
 interface VanField {
     id: string;
@@ -143,25 +144,7 @@ export default function AdminPage() {
             style={{ background: "radial-gradient(ellipse 80% 30% at 50% 0%, #140d00 0%, var(--bg) 50%)" }}>
 
             {/* Header */}
-            <header className="sticky top-0 z-20 border-b"
-                style={{ background: "rgba(15,13,11,0.9)", backdropFilter: "blur(12px)", borderColor: "var(--border)" }}>
-                <div className="max-w-2xl mx-auto px-4 h-14 flex items-center justify-between">
-                    <button onClick={() => router.push("/vote")}
-                        className="flex items-center gap-2 text-sm transition-colors"
-                        style={{ color: "var(--muted)" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--cream)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}>
-                        <ArrowLeft size={15} />
-                        Back to vote
-                    </button>
-                    <div className="flex items-center gap-2">
-                        <UtensilsCrossed size={15} style={{ color: "var(--amber)" }} />
-                        <span className="text-sm font-semibold" style={{ color: "var(--cream)" }}>
-                            HR Admin
-                        </span>
-                    </div>
-                </div>
-            </header>
+            <Header showBack />
 
             <div className="max-w-2xl mx-auto px-4 pt-10 space-y-8">
 

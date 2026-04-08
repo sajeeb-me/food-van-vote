@@ -54,7 +54,8 @@ export default function VotePage() {
 
     return (
         <main className="min-h-screen pb-16"
-            style={{ background: "radial-gradient(ellipse 100% 40% at 50% 0%, #1e1400 0%, var(--bg) 55%)" }}>
+        // style={{ background: "radial-gradient(ellipse 100% 40% at 50% 0%, #1e1400 0%, var(--bg) 55%)" }}
+        >
 
             <Header showAdmin={isHr} />
 
