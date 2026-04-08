@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Loader2, UtensilsCrossed } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import Image from "next/image";
+import Logo from '../../public/logo.png';
+import { useRouter } from "next/navigation";
 
 const COMPANY_DOMAIN = "gmail.com"; // ← change to your actual domain
 
@@ -17,6 +19,7 @@ export default function LoginPage() {
   const [message, setMessage] = useState<{ text: string; ok: boolean } | null>(
     null
   );
+  const router = useRouter();
 
   function validateDomain(e: string) {
     return e.toLowerCase().endsWith(`@${COMPANY_DOMAIN}`);
@@ -35,6 +38,20 @@ export default function LoginPage() {
     }
 
     setLoading(true);
+
+    if (mode === "sign_in") {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        setMessage({ text: error.message, ok: false });
+      } else {
+        // redirect to vote page
+        router.push("/vote");
+      }
+    }
 
     if (mode === "sign_up") {
       const { error } = await supabase.auth.signUp({ email, password });
@@ -66,7 +83,7 @@ export default function LoginPage() {
 
         {/* Logo + Title */}
         <div className="mb-8 text-center">
-          <Image src="/logo.png" alt="FoodVan Vote" width={64} height={64} />
+          <Image src={Logo} alt="FoodVan Vote" width={82} height={82} className="mx-auto" />
           <h1 className="text-2xl font-semibold" style={{ color: "var(--textBase)" }}>
             FoodVan Vote
           </h1>
