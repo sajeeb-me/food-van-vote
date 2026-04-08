@@ -94,11 +94,7 @@ export default function LoginPage() {
 
         {/* Card */}
         <div
-          className="rounded-2xl p-6"
-          style={{
-            background: "var(--surface)",
-            border: "1px solid var(--border)",
-          }}
+          className="rounded-2xl p-6 bg-(--surface) border border-(--border)"
         >
           {/* Toggle */}
           <div className="flex mb-6 border rounded-lg overflow-hidden">
@@ -109,11 +105,7 @@ export default function LoginPage() {
                   setMode(m);
                   setMessage(null);
                 }}
-                className="flex-1 py-2 text-sm font-medium"
-                style={{
-                  background: mode === m ? "var(--surface2)" : "transparent",
-                  color: mode === m ? "var(--textBase)" : "var(--muted)",
-                }}
+                className={`flex-1 py-2 text-sm font-medium ${mode === m ? "bg-(--primary) text-white" : "transparent text-(--muted)"} transition-colors`}
               >
                 {m === "sign_in" ? "Sign in" : "Sign up"}
               </button>
