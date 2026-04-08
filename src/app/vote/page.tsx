@@ -53,9 +53,7 @@ export default function VotePage() {
     }
 
     return (
-        <main className="min-h-screen pb-16"
-        // style={{ background: "radial-gradient(ellipse 100% 40% at 50% 0%, #1e1400 0%, var(--bg) 55%)" }}
-        >
+        <main className="min-h-screen pb-16">
 
             <Header showAdmin={isHr} />
 
@@ -78,19 +76,17 @@ export default function VotePage() {
                 )}
 
                 {/* No active poll */}
-                {!poll && (
+                {!poll ? (
                     <div className="card flex flex-col items-center gap-4 py-20 text-center">
                         <UtensilsCrossed size={40} style={{ color: "var(--border)" }} />
                         <div>
-                            <h2 className="text-xl font-bold" style={{ color: "var(--cream)" }}>No active poll</h2>
-                            <p className="text-sm mt-1" style={{ color: "var(--muted)" }}>
+                            <h2 className="text-xl font-bold text-(--cream)">No active poll</h2>
+                            <p className="text-sm mt-1 text-(--muted)">
                                 Check back soon — HR will set up next month&apos;s options.
                             </p>
                         </div>
                     </div>
-                )}
-
-                {poll && (
+                ) : (
                     <>
                         {/* Poll header */}
                         <div className="mb-8 animate-fade-up">
