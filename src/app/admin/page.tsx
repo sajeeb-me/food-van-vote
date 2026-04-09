@@ -116,6 +116,7 @@ export default function AdminPage() {
                 .eq("is_active", true)
                 .maybeSingle();
             setActivePollId(data?.id ?? null);
+            setTimeout(() => router.push("/vote"), 1500);
         }
     }
 
@@ -140,8 +141,7 @@ export default function AdminPage() {
     }
 
     return (
-        <main className="min-h-screen pb-20"
-            style={{ background: "radial-gradient(ellipse 80% 30% at 50% 0%, #140d00 0%, var(--bg) 50%)" }}>
+        <main className="min-h-screen pb-20">
 
             {/* Header */}
             <Header showBack />
@@ -150,26 +150,20 @@ export default function AdminPage() {
 
                 {/* Page title */}
                 <div className="animate-fade-up">
-                    <h1 className="text-3xl font-black" style={{ color: "var(--cream)", letterSpacing: "-0.02em" }}>
+                    <h1 className="text-3xl font-black" style={{ letterSpacing: "-0.02em" }}>
                         Manage Polls
                     </h1>
-                    <p className="text-sm mt-1" style={{ color: "var(--muted)" }}>
+                    <p className="text-sm mt-1">
                         Create next month&apos;s poll or manage the current one.
                     </p>
                 </div>
 
                 {/* Feedback messages */}
                 {(successMsg || errorMsg) && (
-                    <div className="rounded-xl px-4 py-3 text-sm flex items-center gap-2 animate-fade-up"
-                        style={successMsg ? {
-                            background: "color-mix(in srgb, var(--green) 12%, transparent)",
-                            border: "1px solid color-mix(in srgb, var(--green) 25%, transparent)",
-                            color: "var(--green)",
-                        } : {
-                            background: "color-mix(in srgb, var(--red) 12%, transparent)",
-                            border: "1px solid color-mix(in srgb, var(--red) 25%, transparent)",
-                            color: "var(--red)",
-                        }}>
+                    <div className={`rounded-xl px-4 py-3 text-sm flex items-center gap-2 animate-fade-up ${successMsg
+                        ? "bg-green-900/10 border border-green-900/25 text-green-400"
+                        : "bg-red-900/10 border border-red-900/25 text-red-400"
+                        }`}>
                         {successMsg
                             ? <><CheckCircle2 size={15} /> {successMsg}</>
                             : <>{errorMsg}</>
@@ -250,7 +244,7 @@ export default function AdminPage() {
                         ))}
                     </div>
 
-                    <button type="submit" disabled={loading} className="btn-primary w-full flex items-center justify-center gap-2">
+                    <button type="submit" disabled={loading} className="btn-primary  w-full flex items-center justify-center gap-2">
                         {loading ? <Loader2 size={15} className="animate-spin" /> : <Plus size={15} />}
                         {loading ? "Creating poll…" : "Create & activate poll"}
                     </button>

@@ -55,7 +55,7 @@ h3 {
   letter-spacing: 0.025em;
   transition: all 0.2s;
   background: var(--amber);
-  color: #0f0d0b;
+  color: #ffffff;
   cursor: pointer;
   border: none;
   display: inline-flex;
@@ -85,7 +85,7 @@ h3 {
   font-weight: 500;
   transition: all 0.15s;
   border: 1px solid var(--border);
-  color: var(--muted);
+  /* color: var(--muted); */
   background: transparent;
   cursor: pointer;
   display: inline-flex;
@@ -96,6 +96,7 @@ h3 {
 .btn-ghost:hover {
   border-color: var(--amber-dim);
   color: var(--cream);
+  background-color: #ffffff;
 }
 
 .input {
