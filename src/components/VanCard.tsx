@@ -60,7 +60,7 @@ export function VanCard({
         <div className="absolute top-3 left-3 w-7 h-7 rounded-full flex items-center justify-center text-xs font-black"
           style={{
             background: rank === 1 ? "var(--amber)" : "var(--surface)",
-            color: rank === 1 ? "#0f0d0b" : "var(--muted)",
+            color: rank === 1 ? "#ffffff" : "var(--muted)",
             border: rank !== 1 ? "1px solid var(--border)" : "none",
           }}>
           {rank}
